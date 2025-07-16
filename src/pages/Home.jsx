@@ -1,14 +1,14 @@
-import { Navbar, Main, Product, Footer } from "../components";
+import { Navbar, Main, Product, Footer } from '../components';
 
 function Home() {
-  return (
-    <>
-      <Navbar />
-      <Main />
-      <Product />
-      <Footer />
-    </>
-  )
+    return (
+        <>
+            <Navbar />
+            <Main />
+            <Product />
+            <Footer />
+        </>
+    );
 }
 
 export default Home;

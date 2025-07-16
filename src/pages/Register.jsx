@@ -1,5 +1,5 @@
-import React from 'react'
-import { Footer, Navbar } from "../components";
+import React from 'react';
+import { Footer, Navbar } from '../components';
 import { Link } from 'react-router-dom';
 const Register = () => {
     return (
@@ -39,10 +39,22 @@ const Register = () => {
                                 />
                             </div>
                             <div className="my-3">
-                                <p>Already has an account? <Link to="/login" className="text-decoration-underline text-info">Login</Link> </p>
+                                <p>
+                                    Already has an account?{' '}
+                                    <Link
+                                        to="/login"
+                                        className="text-decoration-underline text-info"
+                                    >
+                                        Login
+                                    </Link>{' '}
+                                </p>
                             </div>
                             <div className="text-center">
-                                <button class="my-2 mx-auto btn btn-dark" type="submit" disabled>
+                                <button
+                                    class="my-2 mx-auto btn btn-dark"
+                                    type="submit"
+                                    disabled
+                                >
                                     Register
                                 </button>
                             </div>
@@ -52,7 +64,7 @@ const Register = () => {
             </div>
             <Footer />
         </>
-    )
-}
+    );
+};
 
-export default Register
+export default Register;

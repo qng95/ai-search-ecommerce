@@ -3,8 +3,17 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 
 const app = express();
+
+// Enable CORS for React app on localhost:3000
+app.use(
+    cors({
+        origin: 'http://localhost:3000',
+        credentials: true, // if you're using cookies or authentication headers
+    })
+);
 
 // config
 if (process.env.NODE_ENV !== 'production') {
@@ -20,19 +29,23 @@ const user = require('./routes/userRoute');
 const product = require('./routes/productRoute');
 const order = require('./routes/orderRoute');
 const payment = require('./routes/paymentRoute');
+const llm = require('./routes/llmRoute');
 
 app.use('/api/v1', user);
 app.use('/api/v1', product);
 app.use('/api/v1', order);
 app.use('/api/v1', payment);
+app.use('/api/v1', llm);
 
 // deployment
 __dirname = path.resolve();
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/frontend/build')))
+    app.use(express.static(path.join(__dirname, '/frontend/build')));
 
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+        res.sendFile(
+            path.resolve(__dirname, 'frontend', 'build', 'index.html')
+        );
     });
 } else {
     app.get('/', (req, res) => {
@@ -44,215 +57,5 @@ if (process.env.NODE_ENV === 'production') {
 // app.use(errorMiddleware);
 
 module.exports = app;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const errorPayment = require('./controllers/paymentController');

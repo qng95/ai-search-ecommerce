@@ -17,7 +17,7 @@ Install dependencies
 ```bash
   npm install
 
-  or 
+  or
 
   npm install react-material-ui-carousel --save --legacy-peer-deps
 ```
