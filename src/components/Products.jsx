@@ -13,6 +13,7 @@ const Products = () => {
     const [filter, setFilter] = useState(data);
 
     const [loading, setLoading] = useState(false);
+
     const [aiSearchLoading, setAiSearchLoading] = useState(false);
     const [showNoResultsModal, setShowNoResultsModal] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
@@ -192,6 +193,15 @@ const Products = () => {
         );
     };
 
+    const filterProduct = (cat) => {
+        const updatedList = data.filter((item) => item.category === cat);
+        setFilter(updatedList);
+    };
+
+    const ShowAllProducts = () => {
+        setFilter(data);
+    };
+
     const handleAISearch = useCallback(
         async (searchText) => {
             if (searchText.trim() === '') {
@@ -333,6 +343,43 @@ const Products = () => {
         );
     };
 
+    const FilterButtons = () => {
+        return (
+            <div className="buttons text-center py-4">
+                <button
+                    className="btn btn-outline-dark btn-sm m-2"
+                    onClick={ShowAllProducts}
+                >
+                    All
+                </button>
+                <button
+                    className="btn btn-outline-dark btn-sm m-2"
+                    onClick={() => filterProduct("men's clothing")}
+                >
+                    Men's Clothing
+                </button>
+                <button
+                    className="btn btn-outline-dark btn-sm m-2"
+                    onClick={() => filterProduct("women's clothing")}
+                >
+                    Women's Clothing
+                </button>
+                <button
+                    className="btn btn-outline-dark btn-sm m-2"
+                    onClick={() => filterProduct('jewelery')}
+                >
+                    Jewelery
+                </button>
+                <button
+                    className="btn btn-outline-dark btn-sm m-2"
+                    onClick={() => filterProduct('electronics')}
+                >
+                    Electronics
+                </button>
+            </div>
+        );
+    };
+
     return (
         <>
             <AILoadingModal />
@@ -420,6 +467,7 @@ const Products = () => {
                         </small>
                     </div>
                 </div>
+                <FilterButtons />
                 <div className="row justify-content-center">
                     {loading ? <Loading /> : <ShowProducts />}
                 </div>
