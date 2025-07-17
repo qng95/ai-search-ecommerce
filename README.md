@@ -120,7 +120,7 @@ This was just a simple implementation to show the idea of how AI can help to opt
 
 However there are still idea on how to extend this further.
 
-1. Instead of filtering on final dataset which is not realistic in realife with huge data and pagination or infinite scrolling. We can use AI to customize data query against database based on user search term.
+1. Instead of filtering on final dataset which is not realistic in realife with huge data and pagination or infinite scrolling. We can use AI to customize data query against database based on user search term. Also feeding full dataset into LLM is not realistic due to context window limit, and costs.
 
 2. The GUI can simply be changes from conventional e-commerce webapp to Chat-like-UI. Where user chat to find the products fit their needs and products list will be dynamically generated to show on the Chat UI. This is something call In-Chat-Shopping, which can also be done using Vercel AI SDK. Utilizing this approach, we can gain deeper user insight and analyze trends easily.
 
